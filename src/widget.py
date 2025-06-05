@@ -1,13 +1,17 @@
-def mask_account_card(proces_inform: str) -> str:
-    ''' Функция обрабатывает информацию как о картах, так и о счетах '''
-    len_list = len(proces_inform)
-    if len_list == 30:
-        mask_numbers = proces_inform[:4] + ' ' + proces_inform[5:13] + ' ' + proces_inform[14:18] + ' ' + proces_inform[19:21] + '** **** ' + proces_inform[-4:]
-    if len_list == 24:
-        mask_numbers = proces_inform[:7] + ' ' + proces_inform[8:12] + ' ' + proces_inform[13:15] + '** **** ' + proces_inform[-4:]
-    if len_list == 25:
-        mask_numbers = proces_inform[:5] + '**' + proces_inform[-4:]
-    return mask_numbers
+from src.masks import get_mask_account, get_mask_card_number
+
+
+def mask_account_card(inform_account_card: str) -> str:
+    ''' Функция обрабатывает информацию о картах и о счетах '''
+    if "счет" in inform_account_card.lower():
+        number_card = inform_account_card[-20:]
+        mask_card = get_mask_account(number_card)
+        return f"Счет {mask_card}"
+    else:
+        number_card = inform_account_card[-16:]
+        mask_card = get_mask_card_number(number_card)
+        name_bank = inform_account_card[:-16]
+        return f"{name_bank}{mask_card}"
 
 
 def get_date(formatting_date: str) -> str:
