@@ -14,6 +14,7 @@ def get_date(formatting_date: str) -> str:
     '''  Функция меняет формат даты '''
     data = formatting_date[:10]
     new_data = []
+
     for element in data.split('-'):
         new_data.append(element)
         reversed_new_data = new_data[::-1]
