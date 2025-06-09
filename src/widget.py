@@ -16,17 +16,12 @@ def mask_account_card(inform_account_card: str) -> str:
 
 def get_date(formatting_date: str) -> str:
     '''  Функция меняет формат даты '''
-    data = formatting_date[:10]
-    new_data = []
-
-    for element in data.split('-'):
-        new_data.append(element)
-        reversed_new_data = new_data[::-1]
-    return '.'.join(reversed_new_data)
+    correct_data = formatting_date[8:10] + "." + formatting_date[5:7] + "." + formatting_date[:4]
+    return correct_data
 
 
 if __name__ == "__main__":
-    print(mask_account_card('Visa Platinum 7000792289606361'))
-    print(mask_account_card('Maestro 7000792289606361'))
-    print(mask_account_card('Счет 73654108430135874305'))
+    print(mask_account_card("Visa Platinum 7000792289606361"))
+    print(mask_account_card("Maestro 7000792289606361"))
+    print(mask_account_card("Счет 73654108430135874305"))
     print(get_date("2024-03-11T02:26:18.671407"))
