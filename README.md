@@ -124,7 +124,6 @@ git init.
 git clone https://github.com/username/myblog.git
 ```
 
-
 2. Установите зависимости:
 ```
 pip install -r requirements.txt
