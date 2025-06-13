@@ -7,9 +7,8 @@ def filter_by_state(list_of_dictionaries: Iterable, state: str = 'EXECUTED') -> 
     словари, у которых ключ state соответствует указанному значению. '''
     filtered_list = []
     for dictionary in list_of_dictionaries:
-        for key, value in dictionary.items():
-            if value == state:
-               filtered_list.append(dictionary)
+        if dictionary['state'] == state:
+            filtered_list.append(dictionary)
     return filtered_list
 
 
