@@ -1,7 +1,7 @@
 from typing import Iterable
 
 
-def filter_by_state(list_of_dictionaries: Iterable, state: str = 'EXECUTED') -> Iterable:
+def filter_by_state(list_of_dictionaries: list, state: str = 'EXECUTED') -> Iterable:
     ''' Функция, которая принимает список словарей и опционально значение для ключа state
     (по умолчанию 'EXECUTED'). Функция возвращает новый список словарей, содержащий только те
     словари, у которых ключ state соответствует указанному значению. '''
