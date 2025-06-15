@@ -1,11 +1,14 @@
-def get_mask_card_number(card_number: str) -> str:
-    ''' Функция маскировки номера банковской карты '''
-    mask_card_number = card_number[:4] + ' ' + card_number[4:6] + '** **** ' + card_number[-4:]
+from mypy.types import Union
+
+
+def get_mask_card_number(card_number: Union[str]) -> str:
+    """ Функция маскировки номера банковской карты """
+    mask_card_number = card_number.replace(" ", "")[:4] + ' ' + card_number.replace(" ", "")[4:6] + '** **** ' + card_number[-4:]
     return mask_card_number
 
 
-def get_mask_account(number_account: str) -> str:
-    ''' Функция маскировки номера банковского счета '''
+def get_mask_account(number_account: Union[str]) -> str:
+    """ Функция маскировки номера банковского счета """
     mask_account = '**' + number_account[-4:]
     return mask_account
 

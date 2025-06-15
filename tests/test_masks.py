@@ -1,9 +1,22 @@
+import pytest
+
 from src.masks import get_mask_card_number, get_mask_account
 
 
-def test_get_mask_card_number():
-    assert get_mask_card_number('7000792289606361') == '7000 79** **** 6361'
+@pytest.mark.parametrize("card_number, expected", [("7000792289606361", "7000 79** **** 6361"),
+                                                   ("1111222233334444", "1111 22** **** 4444"),
+                                                   ("5555666677778888", "5555 66** **** 8888"),
+                                                   ("1234 5678 1234 5678", "1234 56** **** 5678")
+                                                   ])
+def test_get_mask_card_number(card_number, expected):
+    assert get_mask_card_number(card_number) == expected
 
 
-def test_get_mask_account():
-    assert get_mask_account('73654108430135874305') == '**4305'
+@pytest.mark.parametrize("account_number, expected", [("73654108430135874305", "**4305"),
+                                                      ("98765432198765432198", "**2198"),
+                                                      ("1234", "**1234"),
+                                                      ("23", "**23"),
+                                                      ("", "**")
+                                                      ])
+def test_get_mask_account(account_number, expected):
+    assert get_mask_account(account_number) == expected
