@@ -2,7 +2,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(inform_account_card: str) -> str:
-    ''' Функция обрабатывает информацию о картах и о счетах '''
+    """ Функция обрабатывает информацию о картах и о счетах """
     if "счет" in inform_account_card.lower():
         number_card = inform_account_card[-20:]
         mask_card = get_mask_account(number_card)
@@ -15,7 +15,7 @@ def mask_account_card(inform_account_card: str) -> str:
 
 
 def get_date(formatting_date: str) -> str:
-    '''  Функция меняет формат даты '''
+    """  Функция меняет формат даты """
     correct_data = formatting_date[8:10] + "." + formatting_date[5:7] + "." + formatting_date[:4]
     return correct_data
 
