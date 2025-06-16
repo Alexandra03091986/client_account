@@ -16,7 +16,9 @@ def sort_by_date(list_of_dictionaries: Iterable, decreasing: bool = True) -> Ite
     """ Функция, которая принимает список словарей и необязательный параметр,
     задающий порядок сортировки (по умолчанию — убывание). Функция должна возвращать
      новый список, отсортированный по дате (date)."""
-    sorted_list_by_data = sorted(list_of_dictionaries, key = lambda list_of_dic: int(list_of_dic['date'].split('T')[0].replace('-','')), reverse=decreasing)
+    sorted_list_by_data = (
+        sorted(list_of_dictionaries, key=lambda list_of_dic: int(list_of_dic['date'].split('T')[0].replace('-', '')),
+               reverse=decreasing))
     return sorted_list_by_data
 
 
