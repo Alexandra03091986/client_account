@@ -113,7 +113,5 @@ def card_number_generator(start: int, stop: int):
         card_number = str(i).zfill(16)
         yield f"{card_number[:4]} {card_number[4:8]} {card_number[8:12]} {card_number[12:]}"
 
-
 for card_number in card_number_generator(1, 5):
     print(card_number)
-
