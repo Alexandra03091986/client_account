@@ -186,7 +186,26 @@ def test_filter_by_currency():
 
 ])
 def test_transaction_descriptions(transactions, expected):
-
     result = list(transaction_descriptions(transactions))
     assert result == expected
 
+
+@pytest.mark.parametrize("start, stop, expected", [
+    (1, 5, [
+        "0000 0000 0000 0001",
+        "0000 0000 0000 0002",
+        "0000 0000 0000 0003",
+        "0000 0000 0000 0004"
+    ]),
+    (9999999999999995, 10000000000000000, [
+        "9999 9999 9999 9995",
+        "9999 9999 9999 9996",
+        "9999 9999 9999 9997",
+        "9999 9999 9999 9998",
+        "9999 9999 9999 9999"
+    ])
+
+])
+def test_card_number_generator(start, stop, expected):
+    result = list(card_number_generator(start, stop))
+    assert result == expected
