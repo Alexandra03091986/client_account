@@ -8,7 +8,6 @@ def log(filename=None):
         @wraps(func)
         def wrapper(*args, **kwargs):
             try:
-                # print(f"Запуск функции {func.__name__}")
                 result = func(*args, **kwargs)
                 message = f"{func.__name__} ok Result: {result}"
                 if filename:
@@ -18,7 +17,7 @@ def log(filename=None):
                     print(message)
                 return result
             except Exception as err:
-                error_message = f"{func.__name__} error: {type(err).__name__}, args: {args}, kwargs: {kwargs}"
+                error_message = f"{func.__name__} error: {type(err).__name__}. Inputs: {args}, kwargs: {kwargs}"
                 if filename:
                     with open(filename, 'a') as file:
                         file.write(error_message + "\n")
@@ -30,16 +29,11 @@ def log(filename=None):
     return decorator
 
 
-@log(filename="mylog.txt")
+@log(filename=None)
 def my_function(x, y):
     return x + y
 
 my_function(1, 2)
-
-# Ожидаемый вывод в лог-файл mylog.txt при успешном выполнении:
-# my_function ok
-# Ожидаемый вывод при ошибке: my_function error: тип ошибки. Inputs: (1, 2), {}
-# Где тип ошибки заменяется на текст ошибки.
 
 
 # @log()
