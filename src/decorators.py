@@ -16,8 +16,8 @@ def log(filename=None):
                 else:
                     print(message)
                 return result
-            except Exception as err:
-                error_message = f"{func.__name__} error: {type(err).__name__}. Inputs: {args}, kwargs: {kwargs}"
+            except Exception as error:
+                error_message = f"{func.__name__} error: {type(error).__name__}. Inputs: {args}, kwargs: {kwargs}"
                 if filename:
                     with open(filename, 'a') as file:
                         file.write(error_message + "\n")
@@ -29,21 +29,9 @@ def log(filename=None):
     return decorator
 
 
-@log(filename=None)
+@log(filename="mylog.txt")
 def my_function(x, y):
     return x + y
 
 my_function(1, 2)
 
-
-# @log()
-# def another_function(a, b):
-#     if a > b:
-#         raise ValueError("A больше B")
-#     return a * b
-
-
-# Тестовые вызовы функций
-# my_function(1, 2)
-# another_function(3, 4)
-# another_function(5, 1)  # Это вызовет ошибку
