@@ -1,8 +1,6 @@
 from typing import Any, NoReturn
 from unittest.mock import mock_open, patch
 
-import pytest
-
 from src.decorators import log, my_function
 
 
