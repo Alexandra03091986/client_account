@@ -1,4 +1,3 @@
-import os
 import json
 from src.external_api import get_converter
 
@@ -17,11 +16,11 @@ def get_list_dict_finance_transactions(full_path):
         return []
 
 
-# transactions = get_list_dict_finance_transactions('../data/operations.json')
-# print(transactions)  # Выведет список транзакций или [] в случае ошибки
-
-#
 def get_amount_transactions_in_rub(transaction):
+    """ Функция, принимает транзакцию и возвращает сумму транзакции (amount) в рублях, тип данных —
+float. Если транзакция была в USD или EUR, происходит обращение к внешнему API для получения текущего курса валют
+и конвертации суммы операции в рубли. """
+
     amount = transaction.get('operationAmount').get('amount')
     currency = transaction.get('operationAmount').get('currency').get('code')
 
@@ -32,7 +31,9 @@ def get_amount_transactions_in_rub(transaction):
     else:
         return 'Неизвестная валюта'
 
-if __name__ == '__main__':
-    transactions = get_list_dict_finance_transactions('../data/operations.json')
+# if __name__ == '__main__':
+#     transactions = get_list_dict_finance_transactions('../data/operations.json')
+#     print(get_amount_transactions_in_rub(transactions[1]))
 
-    print(get_amount_transactions_in_rub(transactions[1]))
+# transactions = get_list_dict_finance_transactions('../data/operations.json')
+# print(transactions)  # Выведет список транзакций или [] в случае ошибки

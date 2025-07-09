@@ -1,6 +1,6 @@
 from src.utils import get_list_dict_finance_transactions, get_amount_transactions_in_rub
 from unittest.mock import mock_open, patch
-from src.external_api import get_converter
+
 
 def test_get_list_dict_finance_transactions():
     with patch('builtins.open', mock_open(read_data='{"1":"2"}')):
