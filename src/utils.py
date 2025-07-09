@@ -32,9 +32,9 @@ def get_amount_transactions_in_rub(transaction: Dict[str, Any]) -> Union[float, 
     else:
         return 'Неизвестная валюта'
 
-# if __name__ == '__main__':
-#     transactions = get_list_dict_finance_transactions('../data/operations.json')
-#     print(get_amount_transactions_in_rub(transactions[1]))
+if __name__ == '__main__':
+    transactions = get_list_dict_finance_transactions('../data/operations.json')
+    print(get_amount_transactions_in_rub(transactions[1]))
 
-# transactions = get_list_dict_finance_transactions('../data/operations.json')
-# print(transactions)  # Выведет список транзакций или [] в случае ошибки
+transactions = get_list_dict_finance_transactions('../data/operations.json')
+print(transactions)  # Выведет список транзакций или [] в случае ошибки
