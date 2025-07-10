@@ -1,5 +1,10 @@
 from mypy.types import Union
+import logging
 
+# Получаем корневой логер
+logger = logging.getLogger()
+# Получаем логер с определенным именем
+named_logger = logging.getLogger(__name__)
 
 def get_mask_card_number(card_number: Union[str]) -> str:
     """Функция маскировки номера банковской карты"""
