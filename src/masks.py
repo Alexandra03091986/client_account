@@ -1,20 +1,24 @@
 from mypy.types import Union
 
+from logger import logger
+
 
 def get_mask_card_number(card_number: Union[str]) -> str:
     """Функция маскировки номера банковской карты"""
 
     card_number_new = card_number.replace(" ", "")
     mask_card_number = card_number_new[:4] + " " + card_number_new[4:6] + "** **** " + card_number_new[-4:]
+    logger.info(f"Маскировка банковской карты: {mask_card_number}")
     return mask_card_number
 
 
 def get_mask_account(number_account: Union[str]) -> str:
     """Функция маскировки номера банковского счета"""
     mask_account = "**" + number_account[-4:]
+    logger.info(f"Маскировка банковского счета: {mask_account}")
     return mask_account
 
-
+#
 # if __name__ == "__main__":
 #     print(get_mask_card_number("7000792289606361"))
 #     print(get_mask_card_number("7000 7922 8960 6361"))
