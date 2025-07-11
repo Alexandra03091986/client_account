@@ -1,5 +1,5 @@
 from src.masks import get_mask_account, get_mask_card_number
-from src.utils import get_list_dict_finance_transactions
+from src.utils import get_list_dict_finance_transactions, get_amount_transactions_in_rub
 
 result = get_mask_card_number("7000792289606361")
 print(result)
@@ -9,3 +9,4 @@ print(result)
 
 transactions = get_list_dict_finance_transactions('data/operations.json')
 print(transactions)  # Выведет список транзакций или [] в случае ошибки
+print(get_amount_transactions_in_rub(transactions[2]))
