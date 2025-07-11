@@ -2,7 +2,7 @@ import logging
 
 
 """ Настраиваем логгер """
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('my_logger')
 logger.setLevel(logging.DEBUG)
 
 """ Создаем хендлер для вывода в файл """
