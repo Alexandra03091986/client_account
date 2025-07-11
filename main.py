@@ -1,5 +1,5 @@
 from src.masks import get_mask_account, get_mask_card_number
-from src.utils import get_list_dict_finance_transactions, get_amount_transactions_in_rub
+from src.utils import get_amount_transactions_in_rub, get_list_dict_finance_transactions
 
 result = get_mask_card_number("7000792289606361")
 print(result)

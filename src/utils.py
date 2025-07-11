@@ -1,7 +1,7 @@
 import json
 from typing import Any, Dict, List, Union
-from logger import logger
 
+from logger import logger
 from src.external_api import get_converter
 
 
@@ -13,7 +13,7 @@ def get_list_dict_finance_transactions(full_path: str) -> List[Dict[str, Any]]:
     try:
         # Открываем файл и читаем данные
         with open(full_path, 'r', encoding='utf-8') as f:
-            logger.info(f"Транзакции загружены успешно")
+            logger.info("Транзакции загружены успешно")
             return json.load(f)
     except (json.JSONDecodeError, FileNotFoundError) as e:
         # Если файл пустой или невалидный JSON

@@ -1,4 +1,5 @@
 from mypy.types import Union
+
 from logger import logger
 
 
