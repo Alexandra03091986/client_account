@@ -31,3 +31,11 @@ my_function ok Result: 3
 my_function ok Result: 7
 my_function ok Result: 3
 my_function ok Result: 7
+my_function ok Result: 3
+my_function ok Result: 7
+my_function ok Result: 3
+my_function ok Result: 7
+my_function ok Result: 3
+my_function ok Result: 7
+my_function ok Result: 3
+my_function ok Result: 7
