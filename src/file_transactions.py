@@ -38,8 +38,8 @@ def get_transactions_file_xlsx(file_xlsx):
         return []
 
 
-if __name__ == '__main__':
-    csv_transactions = get_transactions_file_csv(PATH_CSV)
-    print(csv_transactions)
+# if __name__ == '__main__':
+#     csv_transactions = get_transactions_file_csv(PATH_CSV)
+#     print(csv_transactions)
     # xlsx_transactions = get_transactions_file_xlsx(PATH_XLSX)
     # print(xlsx_transactions)
