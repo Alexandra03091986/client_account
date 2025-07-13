@@ -1,18 +1,22 @@
 import os
+from pathlib import Path
+from typing import Any, Dict, List, Union
+
 import pandas as pd
+
 from config import DATA_DIR
 
+PATH_CSV = os.path.join(DATA_DIR, "transactions.csv")
+PATH_XLSX = os.path.join(DATA_DIR, "transactions_excel.xlsx")
 
-PATH_CSV = os.path.join(DATA_DIR, 'transactions.csv')
-PATH_XLSX = os.path.join(DATA_DIR, 'transactions_excel.xlsx')
 
-def get_transactions_file_csv(file_csv):
-    """ Функция для считывания финансовых операций из CSV.
-     Возвращает список словарей с транзакцией."""
+def get_transactions_file_csv(file_csv: Union[str, Path]) -> List[Dict[str, Any]]:
+    """Функция для считывания финансовых операций из CSV.
+    Возвращает список словарей с транзакцией."""
 
     try:
-        with open(file_csv, encoding='utf-8') as file:
-            excel_transaction = pd.read_csv(file, delimiter=';')
+        with open(file_csv, encoding="utf-8") as file:
+            excel_transaction = pd.read_csv(file, delimiter=";")
             return excel_transaction.to_dict("records")
     except FileNotFoundError:
         print(f"Ошибка: файл {file_csv} не найден! ")
@@ -22,12 +26,12 @@ def get_transactions_file_csv(file_csv):
         return []
 
 
-def get_transactions_file_xlsx(file_xlsx):
-    """ Функция для считывания финансовых операций из Excel.
+def get_transactions_file_xlsx(file_xlsx: Union[str, Path]) -> List[Dict[str, Any]]:
+    """Функция для считывания финансовых операций из Excel.
     Возвращает список словарей с транзакцией."""
 
     try:
-        with open(file_xlsx, encoding='utf-8'):
+        with open(file_xlsx, encoding="utf-8"):
             excel_transaction = pd.read_excel(file_xlsx)
             return excel_transaction.to_dict("records")
     except FileNotFoundError:
@@ -41,5 +45,5 @@ def get_transactions_file_xlsx(file_xlsx):
 # if __name__ == '__main__':
 #     csv_transactions = get_transactions_file_csv(PATH_CSV)
 #     print(csv_transactions)
-    # xlsx_transactions = get_transactions_file_xlsx(PATH_XLSX)
-    # print(xlsx_transactions)
+# xlsx_transactions = get_transactions_file_xlsx(PATH_XLSX)
+# print(xlsx_transactions)

@@ -18,6 +18,7 @@ def get_mask_account(number_account: Union[str]) -> str:
     logger.info(f"Маскировка банковского счета: {mask_account}")
     return mask_account
 
+
 #
 # if __name__ == "__main__":
 #     print(get_mask_card_number("7000792289606361"))
