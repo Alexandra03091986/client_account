@@ -419,6 +419,19 @@ transactions = (
 4. Лог должен перезаписываться при каждом запуске приложения.
 
 
+## 13.1 Библиотеки ```csv``` и ```pandas```
+### Задачи
+
+Скачайте файлы [transactions.csv](https://github.com/skypro-008/transactions/blob/main/transactions.csv) и [transactions_excel.xlsx](https://github.com/skypro-008/transactions/blob/main/transactions_excel.xlsx) для работы над задачами.
+
+
+- Реализовать считывание финансовых операций из CSV- и XLSX-файлов.
+
+### * Дополнительное задание
+- Типизируйте написанный код и добейтесь того, чтобы ```mypy``` при запуске не выдавал ошибок.
+- Напишите тесты для новых функций.
+
+
 ## Установка:
 
 1. Клонируйте репозиторий:

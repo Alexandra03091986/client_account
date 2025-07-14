@@ -13,7 +13,7 @@ def get_converter(currency: str, amount: str) -> Optional[float]:
     from_currency = currency
     url = f"https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from_currency}&amount={amount}"
 
-    headers = {"apikey": os.getenv('API_KEY')}
+    headers = {"apikey": os.getenv("API_KEY")}
 
     response = requests.get(url, headers=headers, data={})
 
