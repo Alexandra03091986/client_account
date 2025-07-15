@@ -1,5 +1,5 @@
-from config import PATH_JSON
-from src.file_transactions import PATH_CSV, PATH_XLSX, get_transactions_file_csv, get_transactions_file_xlsx
+from config import PATH_JSON, PATH_CSV, PATH_XLSX
+from src.file_transactions import get_transactions_file_csv, get_transactions_file_xlsx
 from src.masks import get_mask_account, get_mask_card_number
 from src.utils import get_amount_transactions_in_rub, get_list_dict_finance_transactions
 

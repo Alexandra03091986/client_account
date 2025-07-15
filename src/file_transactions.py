@@ -1,13 +1,7 @@
-import os
 from pathlib import Path
 from typing import Any, Dict, List, Union
-
+# from config import PATH_XLSX, PATH_CSV
 import pandas as pd
-
-from config import DATA_DIR
-
-PATH_CSV = os.path.join(DATA_DIR, "transactions.csv")
-PATH_XLSX = os.path.join(DATA_DIR, "transactions_excel.xlsx")
 
 
 def get_transactions_file_csv(file_csv: Union[str, Path]) -> List[Dict[str, Any]]:
@@ -45,5 +39,5 @@ def get_transactions_file_xlsx(file_xlsx: Union[str, Path]) -> List[Dict[str, An
 # if __name__ == '__main__':
 #     csv_transactions = get_transactions_file_csv(PATH_CSV)
 #     print(csv_transactions)
-# xlsx_transactions = get_transactions_file_xlsx(PATH_XLSX)
-# print(xlsx_transactions)
+#     xlsx_transactions = get_transactions_file_xlsx(PATH_XLSX)
+#     print(xlsx_transactions)

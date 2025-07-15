@@ -1,7 +1,8 @@
 from typing import Any, Dict, List
 from unittest.mock import patch
 
-from src.file_transactions import PATH_CSV, PATH_XLSX, get_transactions_file_csv, get_transactions_file_xlsx
+from src.file_transactions import get_transactions_file_csv, get_transactions_file_xlsx
+from config import PATH_XLSX, PATH_CSV
 
 
 # Тест успешного чтения .cvs
