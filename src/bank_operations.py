@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 
 def process_bank_search(data:list[dict], search:str)->list[dict]:
@@ -14,18 +15,15 @@ def process_bank_search(data:list[dict], search:str)->list[dict]:
         return []
 
 
-
 def process_bank_operations(data:list[dict], categories:list)->dict:
     """  Считает количество операций в каждой категории. """
-    counts = {}
+    counter = Counter()
     for operation in data:
         description = operation.get('description', '').lower()
         for category in categories:
             if category.lower() in description:
-                counts[category] = counts.get(category, 0) + 1
-    return counts
-
-
+                counter[category] += 1
+    return dict(counter)
 
 
 # if __name__ == '__main__':
@@ -38,13 +36,14 @@ def process_bank_operations(data:list[dict], categories:list)->dict:
 #     print(found)
 
 
-# Пример использования:
-# data = [
-#     {'id': 1, 'amount': 1000, 'description': 'food'},
-#     {'id': 2, 'amount': 500, 'description': 'transport'},
-#     {'id': 3, 'amount': 2000, 'description': 'entertainment'},
-#     {'id': 4, 'amount': 300, 'description': 'food'}
-# ]
-# categories = ['food', 'transport']
-# result = process_bank_operations(data, categories)
-# print(result)
+#    Пример использования:
+#     data = [
+#         {'id': 1, 'amount': 1000, 'description': 'food'},
+#         {'id': 2, 'amount': 500, 'description': 'transport'},
+#         {'id': 3, 'amount': 2000, 'description': 'entertainment'},
+#         {'id': 4, 'amount': 300, 'description': 'food'},
+#         {'id': 5, 'amount': 3000, 'description': 'entertainment'}
+#     ]
+#     categories = ['food', 'transport', 'entertainment']
+#     result = process_bank_operations(data, categories)
+#     print(result)

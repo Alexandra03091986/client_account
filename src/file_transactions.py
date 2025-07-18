@@ -11,7 +11,8 @@ def get_transactions_file_csv(file_csv: Union[str, Path]) -> List[Dict[str, Any]
     try:
         with open(file_csv, encoding="utf-8") as file:
             excel_transaction = pd.read_csv(file, delimiter=";")
-            return excel_transaction.to_dict("records")
+            transactions = excel_transaction.to_dict("records")
+            return transactions
     except FileNotFoundError:
         print(f"Ошибка: файл {file_csv} не найден! ")
         return []
@@ -27,7 +28,8 @@ def get_transactions_file_xlsx(file_xlsx: Union[str, Path]) -> List[Dict[str, An
     try:
         with open(file_xlsx, encoding="utf-8"):
             excel_transaction = pd.read_excel(file_xlsx)
-            return excel_transaction.to_dict("records")
+            transactions = excel_transaction.to_dict("records")
+            return transactions
     except FileNotFoundError:
         print(f"Ошибка: файл {file_xlsx} не найден! ")
         return []
