@@ -1,15 +1,14 @@
 import json
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
-
-from config import PATH_JSON, PATH_CSV, PATH_XLSX
+from config import PATH_CSV, PATH_JSON, PATH_XLSX
 from src.bank_operations import process_bank_search
-from src.file_transactions import get_transactions_file_xlsx, get_transactions_file_csv
-from src.processing import sort_by_date, filter_by_state
+from src.file_transactions import get_transactions_file_csv, get_transactions_file_xlsx
+from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
 
 
-def get_transactions_file_json(full_path):
+def get_transactions_file_json(full_path: str) -> List[Dict[str, Any]]:
     """ Загружаем данные из JSON-файла и преобразуем
     в формат пригодный для Exel/CSV. """
 
@@ -29,9 +28,9 @@ def get_transactions_file_json(full_path):
             'from': operation.get('from', ''),
             'to': operation.get('to', ''),
             'description': operation.get('description')
-            })
-        # if not operation:  # Пропуск пустых операций
-        #     continue
+        })
+        if not operation:   # Пропуск пустых операций
+            continue
     return file_conversion
 
 
@@ -56,8 +55,10 @@ def print_transaction(transaction: Dict[str, Any]) -> None:
     description = transaction["description"]
 
     # Обработка from и to
-    from_account = mask_account_card(transaction["from"]) if "from" in transaction and isinstance(transaction["from"], str) else "Не указано"
-    to_account = mask_account_card(transaction["to"]) if "to" in transaction and isinstance(transaction["to"], str) else "Не указано"
+    from_account = mask_account_card(transaction["from"]) \
+        if "from" in transaction and isinstance(transaction["from"], str) else "Не указано"
+    to_account = mask_account_card(transaction["to"]) \
+        if "to" in transaction and isinstance(transaction["to"], str) else "Не указано"
 
     # Получаем сумму и валюту
     amount = transaction["amount"]
@@ -77,7 +78,7 @@ def print_transaction(transaction: Dict[str, Any]) -> None:
     print(f"Сумма: {amount} {currency}\n")
 
 
-def main():
+def main() -> None:
     print('Привет! Добро пожаловать в программу работы с банковскими транзакциями.')
     print('Выберите необходимый пункт меню:\n'
           '1. Получить информацию о транзакциях из JSON-файла \n'
@@ -140,7 +141,7 @@ def main():
 
     # Фильтрация по ключевому слову
     search_choice = get_user_choice("\nОтфильтровать список транзакций по определенному слову в описании? (Да/Нет) \n",
-                                  ["Да", "Нет"])
+                                    ["Да", "Нет"])
     if search_choice == "Да":
         search_word = input("\nВведите слово для поиска в описании: ").strip()
         filtered_transactions = process_bank_search(filtered_transactions, search_word)

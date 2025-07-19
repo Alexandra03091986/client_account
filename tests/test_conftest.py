@@ -1,11 +1,11 @@
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 
 def test_card_number_fixture(card_number: List[str]) -> None:
     # Проверяем, что фикстура возвращает список
     assert isinstance(card_number, list)
     # Проверяем, что все элементы в списке - строки
-    assert all(isinstance(num,str) for num in card_number)
+    assert all(isinstance(num, str) for num in card_number)
     # Проверяем конкретные значения
     assert "7000792289606361" in card_number
     assert "1111222233334444" in card_number

@@ -6,7 +6,7 @@ def filter_by_state(list_of_dictionaries: list, state: str = "EXECUTED") -> Iter
     (по умолчанию 'EXECUTED'). Функция возвращает новый список словарей, содержащий только те
     словари, у которых ключ state соответствует указанному значению."""
     filtered_list = []
-    state_upper = state.upper() # Приводим к верхнему регистру
+    state_upper = state.upper()   # Приводим к верхнему регистру
 
     for dictionary in list_of_dictionaries:
         if "state" in dictionary:

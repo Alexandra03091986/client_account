@@ -2,7 +2,7 @@ import re
 from collections import Counter
 
 
-def process_bank_search(data:list[dict], search:str)->list[dict]:
+def process_bank_search(data: list[dict], search: str) -> list[dict]:
     """  Фильтрует список словарей с данными о банковских операциях, оставляя только те,
     в описании которых встречается заданная строка. """
     try:
@@ -15,7 +15,7 @@ def process_bank_search(data:list[dict], search:str)->list[dict]:
         return []
 
 
-def process_bank_operations(data:list[dict], categories:list)->dict:
+def process_bank_operations(data: list[dict], categories: list) -> dict:
     """  Считает количество операций в каждой категории. """
     counter = Counter()
     for operation in data:

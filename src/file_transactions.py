@@ -1,10 +1,11 @@
 from pathlib import Path
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, Hashable, List, Union
+
 # from config import PATH_XLSX, PATH_CSV
 import pandas as pd
 
 
-def get_transactions_file_csv(file_csv: Union[str, Path]) -> List[Dict[str, Any]]:
+def get_transactions_file_csv(file_csv: Union[str, Path]) -> List[Dict[Hashable, Any]]:
     """Функция для считывания финансовых операций из CSV.
     Возвращает список словарей с транзакцией."""
 
@@ -21,7 +22,7 @@ def get_transactions_file_csv(file_csv: Union[str, Path]) -> List[Dict[str, Any]
         return []
 
 
-def get_transactions_file_xlsx(file_xlsx: Union[str, Path]) -> List[Dict[str, Any]]:
+def get_transactions_file_xlsx(file_xlsx: Union[str, Path]) -> List[Dict[Hashable, Any]]:
     """Функция для считывания финансовых операций из Excel.
     Возвращает список словарей с транзакцией."""
 
