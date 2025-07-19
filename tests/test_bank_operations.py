@@ -1,5 +1,3 @@
-import pytest
-
 from src.bank_operations import process_bank_search, process_bank_operations
 
 
