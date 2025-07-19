@@ -9,8 +9,8 @@ from src.widget import get_date, mask_account_card
 
 
 def get_transactions_file_json(full_path: str) -> List[Dict[str, Any]]:
-    """ Загружаем данные из JSON-файла и преобразуем
-    в формат пригодный для Exel/CSV. """
+    """ Загружаем данные из JSON-файла и преобразует
+    в унифицированный формат пригодный для Exel/CSV. """
 
     # Загрузка данных из JSON-файла
     with open(full_path, 'r', encoding='utf-8') as file:
@@ -18,6 +18,9 @@ def get_transactions_file_json(full_path: str) -> List[Dict[str, Any]]:
     # Преобразование
     file_conversion = []
     for operation in data:
+        if not operation:   # Пропуск пустых операций
+            continue
+
         file_conversion.append({
             'id': operation.get('id'),
             'state': operation.get('state'),
@@ -29,13 +32,11 @@ def get_transactions_file_json(full_path: str) -> List[Dict[str, Any]]:
             'to': operation.get('to', ''),
             'description': operation.get('description')
         })
-        if not operation:   # Пропуск пустых операций
-            continue
     return file_conversion
 
 
 def get_user_choice(prompt: str, valid_choices: List[str]) -> str:
-    """Получает выбор пользователя с валидацией."""
+    """Получает и валидирует выбор пользователя."""
     while True:
         user_input = input(f"{prompt}\nПользователь: ").strip().lower()
         for choice in valid_choices:
@@ -45,12 +46,12 @@ def get_user_choice(prompt: str, valid_choices: List[str]) -> str:
 
 
 def filter_rub_transactions(transactions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Фильтрует только рублевые транзакции."""
+    """Фильтрует транзакции, оставляя только рублевые."""
     return [t for t in transactions if t.get("currency_code") == "RUB"]
 
 
 def print_transaction(transaction: Dict[str, Any]) -> None:
-    """Печатает информацию о транзакции в заданном формате."""
+    """Форматирует и печатает информацию о транзакции в заданном формате."""
     date = get_date(transaction["date"])
     description = transaction["description"]
 
@@ -79,6 +80,9 @@ def print_transaction(transaction: Dict[str, Any]) -> None:
 
 
 def main() -> None:
+    """Основная функция обработки банковских транзакций.
+     Программа фильтрует данные, производит выборку операций, необходимых пользователю,
+    и выводит в консоль операции, соответствующие выборке пользователя. """
     print('Привет! Добро пожаловать в программу работы с банковскими транзакциями.')
     print('Выберите необходимый пункт меню:\n'
           '1. Получить информацию о транзакциях из JSON-файла \n'
