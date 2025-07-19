@@ -25,7 +25,6 @@ def process_bank_operations(data:list[dict], categories:list)->dict:
                 counter[category] += 1
     return dict(counter)
 
-
 # if __name__ == '__main__':
 #     operations = [
 #         {"amount": 500, "description": "Оплата кафе"},
@@ -34,7 +33,6 @@ def process_bank_operations(data:list[dict], categories:list)->dict:
 #     ]
 #     found = process_bank_search(operations, "перевод")
 #     print(found)
-
 
 #    Пример использования:
 #     data = [
