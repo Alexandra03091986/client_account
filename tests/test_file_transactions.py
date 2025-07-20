@@ -1,7 +1,8 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, Hashable, List
 from unittest.mock import patch
 
-from src.file_transactions import PATH_CSV, PATH_XLSX, get_transactions_file_csv, get_transactions_file_xlsx
+from config import PATH_CSV, PATH_XLSX
+from src.file_transactions import get_transactions_file_csv, get_transactions_file_xlsx
 
 
 # Тест успешного чтения .cvs
@@ -20,7 +21,7 @@ def test_get_transactions_file_csv() -> None:
                 "description": "Перевод организации",
             }
         ]
-        result: List[Dict[str, Any]] = get_transactions_file_csv(PATH_CSV)
+        result: List[Dict[Hashable, Any]] = get_transactions_file_csv(PATH_CSV)
         assert result == [
             {
                 "id": 650703.0,
@@ -69,7 +70,7 @@ def test_get_transactions_file_xlsx() -> None:
                 "description": "Перевод организации",
             }
         ]
-        result: List[Dict[str, Any]] = get_transactions_file_xlsx(PATH_XLSX)
+        result: List[Dict[Hashable, Any]] = get_transactions_file_xlsx(PATH_XLSX)
         assert result == [
             {
                 "id": 650703.0,

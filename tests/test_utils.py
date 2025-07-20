@@ -1,14 +1,14 @@
 from unittest.mock import mock_open, patch
 
-from src.utils import get_amount_transactions_in_rub, get_list_dict_finance_transactions
+from src.utils import get_amount_transactions_in_rub, get_list_dict_finance_transactions_json
 
 
 def test_get_list_dict_finance_transactions() -> None:
     with patch("builtins.open", mock_open(read_data='{"1": "2"}')):
-        assert get_list_dict_finance_transactions("") == {"1": "2"}
+        assert get_list_dict_finance_transactions_json("") == {"1": "2"}
 
     with patch("builtins.open", mock_open(read_data='{"1": "2"')):
-        assert get_list_dict_finance_transactions("") == []
+        assert get_list_dict_finance_transactions_json("") == []
 
 
 def test_get_amount_transactions_in_rub() -> None:

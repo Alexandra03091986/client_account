@@ -5,7 +5,7 @@ from logger import logger
 from src.external_api import get_converter
 
 
-def get_list_dict_finance_transactions(full_path: str) -> List[Dict[str, Any]]:
+def get_list_dict_finance_transactions_json(full_path: str) -> List[Dict[str, Any]]:
     """Функция принимает на вход путь до JSON-файла и возвращает список словарей с данными
     о финансовых транзакциях. Если файл пустой, невалидный, содержит не список или не найден,
      функция возвращает пустой список."""
@@ -40,8 +40,8 @@ def get_amount_transactions_in_rub(transaction: Dict[str, Any]) -> Union[float, 
 
 
 # if __name__ == '__main__':
-#     transactions = get_list_dict_finance_transactions(PATH_JSON)
+#     transactions = get_list_dict_finance_transactions_json(PATH_JSON)
 #     print(get_amount_transactions_in_rub(transactions[1]))
 #
-#     transactions = get_list_dict_finance_transactions(PATH_JSON)
+#     transactions = get_list_dict_finance_transactions_json(PATH_JSON)
 #     print(transactions)  # Выведет список транзакций или [] в случае ошибки
